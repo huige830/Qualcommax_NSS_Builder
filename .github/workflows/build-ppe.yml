@@ -100,8 +100,9 @@ jobs:
       contents: write
     strategy:
       fail-fast: false
+      # 只编 ipq60xx（JDCloud RE-CS-02 雅典娜所在子目标）
       matrix:
-        subtarget: [ipq807x, ipq60xx]
+        subtarget: [ipq60xx]
     env:
       GH_TOKEN: ${{ github.token }}
       SUBTARGET: ${{ matrix.subtarget }}
