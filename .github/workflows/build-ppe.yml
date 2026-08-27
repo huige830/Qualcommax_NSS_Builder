@@ -140,6 +140,7 @@ jobs:
           set -euo pipefail
           git clone --depth 1 https://github.com/vernesong/OpenClash.git package/openclash
           git clone --depth 1 https://github.com/sirpdboy/luci-app-advanced.git package/luci-app-advanced
+          git clone --depth 1 https://github.com/sirpdboy/luci-app-partexp.git package/luci-app-partexp
           git clone --depth 1 https://github.com/sbwml/luci-app-diskman.git package/diskman-src
           mv package/diskman-src/luci-app-diskman package/luci-app-diskman
           rm -rf package/diskman-src
