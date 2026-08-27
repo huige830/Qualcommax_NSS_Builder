@@ -11,15 +11,12 @@
 # the subtarget) and runs `make defconfig`; COMMON=common-ppe in the workflow
 # picks this file over devices/common/config.
 #
+# 本 fork 改动：去掉 MULTI_PROFILE/ALL_PROFILES/PER_DEVICE_ROOTFS 三行，
+# 因为 prepare-build.sh 的符号校验会把"设备配置里有意覆盖为关"的符号
+# 当成丢失而报错；本 fork 只做单设备构建，不需要多 profile。
+#
 
 CONFIG_TARGET_qualcommax=y
-
-## Every board of the subtarget in one image set, the way the OpenWrt buildbot
-## builds a target. The ath11k memory profile stays at the target default, so
-## the per-RAM grouping the NSS images need does not apply.
-CONFIG_TARGET_MULTI_PROFILE=y
-CONFIG_TARGET_ALL_PROFILES=y
-CONFIG_TARGET_PER_DEVICE_ROOTFS=y
 
 ## Sysupgrade-only, as with the NSS images: the audience already runs OpenWrt.
 # CONFIG_TARGET_ROOTFS_INITRAMFS is not set

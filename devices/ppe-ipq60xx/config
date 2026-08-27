@@ -1,19 +1,18 @@
 # PPE 流卸载固件 — 仅 JDCloud RE-CS-02（雅典娜）单设备构建。
-# prepare-build.sh 把本文件拼在 devices/common-ppe/config 之后，
-# 后写的覆盖先写的：这里关掉 common-ppe 的全设备 MULTI_PROFILE。
+# prepare-build.sh 把本文件拼在 devices/common-ppe/config 之后运行 defconfig。
+#
+# 注意：
+# - 必须先选子目标 ipq60xx 再选设备符号，否则依赖不满足会被 defconfig 丢弃；
+# - 中文界面只需 CONFIG_LUCI_LANG_zh_Hans=y，各应用的 i18n 包
+#   （luci-i18n-*-zh-cn，注意包名用 zh-cn 别名）会由 luci.mk 的 DEFAULT 自动选中。
 
-# CONFIG_TARGET_MULTI_PROFILE is not set
-# CONFIG_TARGET_ALL_PROFILES is not set
+CONFIG_TARGET_qualcommax_ipq60xx=y
 CONFIG_TARGET_qualcommax_ipq60xx_DEVICE_jdcloud_re-cs-02=y
 
-## LuCI 简体中文（此 snapshot 的语言代码是 zh_Hans）
-CONFIG_PACKAGE_luci-i18n-base-zh_Hans=y
-CONFIG_PACKAGE_luci-i18n-firewall-zh_Hans=y
-CONFIG_PACKAGE_luci-i18n-sqm-zh_Hans=y
-CONFIG_PACKAGE_luci-i18n-ttyd-zh_Hans=y
-CONFIG_PACKAGE_luci-i18n-package-manager-zh_Hans=y
+## LuCI 简体中文（自动带上 base/firewall/sqm/ttyd/package-manager 等翻译）
+CONFIG_LUCI_LANG_zh_Hans=y
 
-## 系统管理类（管理权/启动项/计划任务/LED/备份升级随 luci-mod-system 自带）
+## 系统管理类（管理权/启动项/计划任务/LED/挂载点/备份升级随 luci-mod-system 自带）
 CONFIG_PACKAGE_htop=y
 CONFIG_PACKAGE_curl=y
 CONFIG_PACKAGE_nano=y
