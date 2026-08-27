@@ -154,6 +154,10 @@ jobs:
           git clone --depth 1 --branch v2.4.0 https://github.com/unraveloop/JDC-AX6600-Athena-LED-Controller.git package/athena-led-controller
           # 定时任务（定时重启/关机/重启网络/定时释放内存/清理垃圾，autotimeset 的后续版本）
           git clone --depth 1 https://github.com/sirpdboy/luci-app-taskplan.git package/luci-app-taskplan
+          # Fluent 主题（仓库为 package/ 子目录布局，提升到 package/ 下）
+          git clone --depth 1 https://github.com/LazuliKao/luci-theme-fluent.git package/fluent-src
+          mv package/fluent-src/package/luci-theme-fluent package/luci-theme-fluent
+          rm -rf package/fluent-src
 
       - name: Prepare build environment
         env:

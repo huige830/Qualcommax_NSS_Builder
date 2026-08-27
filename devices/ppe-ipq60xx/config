@@ -62,3 +62,6 @@ CONFIG_PACKAGE_luci-app-athena-led=y
 ## 定时任务：定时重启/关机/重启网络 + 定时释放内存/清理垃圾（含 ramfree 功能，替代 luci-app-ramfree）
 CONFIG_PACKAGE_luci-app-taskplan=y
 CONFIG_PACKAGE_bash=y
+
+## Fluent 主题（ucode 模板，依赖已就位：luci-base + ucode-mod-math）
+CONFIG_PACKAGE_luci-theme-fluent=y
