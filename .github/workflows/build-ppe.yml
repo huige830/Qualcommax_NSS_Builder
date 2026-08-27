@@ -150,7 +150,8 @@ jobs:
           git clone --depth 1 https://github.com/timsaya/luci-app-bandix-plus.git package/luci-app-bandix-plus
           git clone --depth 1 https://github.com/timsaya/openwrt-bandix-plus.git package/openwrt-bandix-plus
           # 雅典娜 LED 点阵屏（预编译 musl 二进制，走 /dev/gpiochipN 字符设备，无需额外 kmod）
-          git clone --depth 1 https://github.com/unraveloop/JDC-AX6600-Athena-LED-Controller.git package/athena-led-controller
+          # 锁定 v2.4.0：main 分支 Makefile 已指向 v2.5.0 但作者尚未发布该 release，用最新可用标签
+          git clone --depth 1 --branch v2.4.0 https://github.com/unraveloop/JDC-AX6600-Athena-LED-Controller.git package/athena-led-controller
 
       - name: Prepare build environment
         env:
