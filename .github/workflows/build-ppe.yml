@@ -144,8 +144,6 @@ jobs:
           git clone --depth 1 https://github.com/sbwml/luci-app-diskman.git package/diskman-src
           mv package/diskman-src/luci-app-diskman package/luci-app-diskman
           rm -rf package/diskman-src
-          # OpenList 文件列表（Go 源码编译，本树 golang feed 为 1.27 满足其 1.25+ 要求）
-          git clone --depth 1 https://github.com/sbwml/luci-app-openlist2.git package/openlist2
           # EasyTier 组网（核心为 release 预编译二进制，无需 Rust 工具链）
           git clone --depth 1 https://github.com/EasyTier/luci-app-easytier.git package/luci-app-easytier
           # Bandix Plus 流量监控（前端 + eBPF 后端，后端同样为预编译二进制）

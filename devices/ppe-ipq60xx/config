@@ -38,8 +38,11 @@ CONFIG_PACKAGE_luci-app-partexp=y
 CONFIG_PACKAGE_luci-app-statistics=y
 CONFIG_PACKAGE_collectd-mod-thermal=y
 
-## OpenList 文件列表（Go 编译，核心 openlist2 随依赖自动选上）
-CONFIG_PACKAGE_luci-app-openlist2=y
+## OpenList 事后自行安装（编译太慢）：ssh 下载 apk 包后
+##   curl -L -o /tmp/openlist.apk <release url>
+##   apk add --allow-untrusted /tmp/openlist.apk
+## 本机挂载网盘需 kmod-fuse（内核 6.18 滚动版，kmod 必须随固件编译，无法事后装）
+CONFIG_PACKAGE_kmod-fuse=y
 
 ## EasyTier 组网（release 预编译核心，kmod-tun 随依赖自动选上）
 CONFIG_PACKAGE_luci-app-easytier=y
