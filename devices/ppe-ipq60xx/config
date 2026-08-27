@@ -21,6 +21,9 @@ CONFIG_PACKAGE_luci-app-ttyd=y
 
 ## SFTP 服务端（上游默认不带，SSH 工具的文件管理依赖它；ImmortalWrt 默认内置）
 CONFIG_PACKAGE_openssh-sftp-server=y
+
+## ucode math 模块（fluent 等第三方主题的 header.ut 需要 srand，主题包未声明此依赖）
+CONFIG_PACKAGE_ucode-mod-math=y
 CONFIG_PACKAGE_luci-app-package-manager=y
 CONFIG_PACKAGE_block-mount=y
 
