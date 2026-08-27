@@ -131,13 +131,18 @@ jobs:
       # 第三方 LuCI 应用：OpenClash、高级设置、磁盘管理。
       # 必须在 prepare-build.sh 之前克隆进 package/，defconfig 才能识别
       # 这些包，prepare-build.sh 的符号校验也才能通过。
+      # 磁盘管理用 sbwml 版（JS 重写，支持 apk/ucode；kuoruan 原仓库已删除，
+      # lisaac 版依赖 luci-lib-ipkg 与 apk 包管理器不兼容），其仓库为
+      # 子目录布局，克隆后把包目录提出来。
       - name: Fetch third-party packages
         working-directory: openwrt
         run: |
           set -euo pipefail
           git clone --depth 1 https://github.com/vernesong/OpenClash.git package/openclash
           git clone --depth 1 https://github.com/sirpdboy/luci-app-advanced.git package/luci-app-advanced
-          git clone --depth 1 https://github.com/kuoruan/luci-app-diskman.git package/luci-app-diskman
+          git clone --depth 1 https://github.com/sbwml/luci-app-diskman.git package/diskman-src
+          mv package/diskman-src/luci-app-diskman package/luci-app-diskman
+          rm -rf package/diskman-src
 
       - name: Prepare build environment
         env:
