@@ -239,10 +239,8 @@ jobs:
           grep 'sysupgrade.bin' "$out/sha256sums" >"sha256sums-${SUBTARGET}.txt"
           cp "$out/config.buildinfo" "config-${SUBTARGET}.buildinfo"
 
-          # --clobber deletes and re-uploads, which resets the download count;
-          # fold this subtarget's assets into the lifetime total first.
-          REPO="$GITHUB_REPOSITORY" bash builder/scripts/download-stats.sh \
-            "$TAG:^(openwrt-qualcommax-${SUBTARGET}-|sha256sums-${SUBTARGET}\\.txt$|config-${SUBTARGET}\\.buildinfo$)"
+          # 本 fork 不需要下载计数统计（上游把累计数存在其仓库的 stats 分支，
+          # fork 没有该分支，调用会 404），故跳过 download-stats.sh。
 
           for attempt in 1 2 3; do
             gh release upload "$TAG" \
